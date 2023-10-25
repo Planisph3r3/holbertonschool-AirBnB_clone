@@ -42,8 +42,8 @@ class BaseModel():
         Este método retorna un diccionario con los atributos de instancia.
         """
 
-        new_dict = dict(self.__dict__)
-        new_dict['created_at'] = self.__dict__['created_at'].isoformat()
-        new_dict['updated_at'] = self.__dict__['updated_at'].isoformat()
-        new_dict['__class__'] = self.__class__.__name__
-        return (new_dict)
+        my_dict = dict(self.__dict__)
+        my_dict['created_at'] = self.__dict__['created_at'].isoformat()
+        my_dict['updated_at'] = self.__dict__['updated_at'].isoformat()
+        my_dict['__class__'] = self.__class__.__name__
+        return (my_dict)
