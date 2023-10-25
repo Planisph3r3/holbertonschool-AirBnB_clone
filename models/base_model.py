@@ -4,7 +4,7 @@ Este módulo define la clase BaseModel
 """
 
 import uuid
-import datetime
+from datetime import datetime
 
 
 class BaseModel:
@@ -24,8 +24,8 @@ class BaseModel:
                     cada vez que se cambia nuestra instancia.
         """
         self.id = str(uuid.uuid4())
-        self.created_at = datetime.datetime.now()
-        self.updated_at = datetime.datetime.now()
+        self.created_at = datetime.now()
+        self.updated_at = datetime.now()
 
     def __str__(self):
         """
@@ -34,8 +34,7 @@ class BaseModel:
         Returns:
             str: Representación de instancia.
         """
-        return "[{}] ({}) {}".\
-            format(type(self).__name__, self.id, self.__dict__)
+        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
 
     def save(self):
         """
@@ -50,8 +49,8 @@ class BaseModel:
         Returns:
             dict: Regresa un diccionario con los atributos de instancia.
         """
-        my_dict = self.__dict__.copy()
-        my_dict["__class__"] = type(self).__name__
+        my_dict = dict(self.__dict__)
         my_dict["created_at"] = my_dict["created_at"].isoformat()
         my_dict["updated_at"] = my_dict["updated_at"].isoformat()
+        my_dict["__class__"] = type(self).__name__
         return my_dict
