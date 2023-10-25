@@ -1,4 +1,9 @@
 #!/usr/bin/python3
+"""
+Este módulo contiene los test para nuestra clase BaseModel.
+"""
+
+
 from models.base_model import BaseModel
 
 my_model = BaseModel()
