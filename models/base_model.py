@@ -5,7 +5,6 @@ Este módulo define la clase BaseModel
 
 import uuid
 import datetime
-from models import storage
 
 
 class BaseModel:
