@@ -4,7 +4,8 @@ Este módulo define la clase BaseModel
 """
 
 import uuid
-from datetime import datetime
+import datetime
+from models import storage
 
 
 class BaseModel:
