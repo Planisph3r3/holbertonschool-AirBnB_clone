@@ -16,16 +16,16 @@ class BaseModel:
         """
         Este método inicializa lo sgte:
             id, created_at, updated_at
-            Attr:
-                id (str): Genera un id cada vez que se instancia.
-                created_ad (str): Genera la hora y fecha cada vez
-                        que se instancia un nuevo objeto.
-                updated_at (str): Genera y actualiza la hora y fecha,
-                        cada vez que se cambia nuestra instancia.
+        Attr:
+            id (str): Genera un id cada vez que se instancia.
+            created_ad (str): Genera la hora y fecha cada vez
+                    que se instancia un nuevo objeto.
+            updated_at (str): Genera y actualiza la hora y fecha,
+                    cada vez que se cambia nuestra instancia.
         """
         self.id = str(uuid.uuid4())
         self.created_at = datetime.datetime.now().isoformat()
-        self.updated_at = datetime.datetime.now().isoformat()
+        self.updated_at = self.created_at
 
     def __str__(self):
         """
