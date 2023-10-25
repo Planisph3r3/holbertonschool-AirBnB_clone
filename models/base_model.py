@@ -5,9 +5,9 @@ Este módulo define la clase BaseModel
 
 import uuid
 from datetime import datetime
+import models
 
-
-class BaseModel:
+class BaseModel():
     """
     Esta es la clase que heredarán las demas clases
     """
@@ -40,7 +40,7 @@ class BaseModel:
         """
         Este método retorna un diccionario con los atributos de instancia.
         """
-        
+
         my_dict = dict(self.__dict__)
         my_dict['created_at'] = my_dict['created_at'].isoformat()
         my_dict['updated_at'] = my_dict['updated_at'].isoformat()
