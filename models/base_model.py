@@ -24,9 +24,9 @@ class BaseModel:
                     cada vez que se cambia nuestra instancia.
         """
         self.id = str(uuid.uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
-        storage.new(self)
+        self.created_at = datetime.datetime.now()
+        self.updated_at = datetime.datetime.now()
+
     def __str__(self):
         """
         Este metodo regresa una representación de nuestra instancia
@@ -42,7 +42,6 @@ class BaseModel:
         Este método actualiza la fecha de creación updated_at.
         """
         self.updated_at = datetime.now()
-        storage.save()
 
     def to_dict(self):
         """
