@@ -9,18 +9,18 @@ from datetime import datetime
 
 class BaseModel:
     """
-    Esta clase define BaseModel
+    Esta es la clase que heredarán las demas clases
     """
 
     def __init__(self):
         """
-        Este método inicializa lo sgte:
+        Este método inicializa los atributos:
             id, created_at, updated_at
         Attr:
-            id (str): Genera un id cada vez que se instancia.
-            created_ad (str): Genera la hora y fecha cada vez
+            id : Genera un id cada vez que se instancia.
+            created_ad : Genera la hora y fecha cada vez
                     que se instancia un nuevo objeto.
-            updated_at (str): Genera y actualiza la hora y fecha,
+            updated_at : Genera y actualiza la hora y fecha,
                     cada vez que se cambia nuestra instancia.
         """
         self.id = str(uuid.uuid4())
@@ -29,10 +29,7 @@ class BaseModel:
 
     def __str__(self):
         """
-        Este metodo regresa una representación de nuestra instancia
-
-        Returns:
-            str: Representación de instancia.
+        Este metodo retorna una representación de nuestra instancia
         """
         return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
 
@@ -44,10 +41,7 @@ class BaseModel:
 
     def to_dict(self):
         """
-        Este método regresa un diccionario.
-
-        Returns:
-            dict: Regresa un diccionario con los atributos de instancia.
+        Este método retorna un diccionario con los atributos de instancia.
         """
         my_dict = dict(self.__dict__)
         my_dict['created_at'] = my_dict['created_at'].isoformat()
