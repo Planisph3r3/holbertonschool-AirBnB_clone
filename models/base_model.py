@@ -27,7 +27,8 @@ class BaseModel():
         Este metodo retorna una representación de nuestra instancia
         """
 
-        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
+        return "[{}] ({}) {}".format(self.__class__.__name__, 
+                                     self.id, self.__dict__)
 
     def save(self):
         """
@@ -42,7 +43,7 @@ class BaseModel():
         """
 
         my_dict = dict(self.__dict__)
-        my_dict['created_at'] = my_dict['created_at'].isoformat()
-        my_dict['updated_at'] = my_dict['updated_at'].isoformat()
+        my_dict['created_at'] = self.__dict__['created_at'].isoformat()
+        my_dict['updated_at'] = self.__dict__['updated_at'].isoformat()
         my_dict['__class__'] = self.__class__.__name__
         return (my_dict)
