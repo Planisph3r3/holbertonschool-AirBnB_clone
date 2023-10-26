@@ -29,6 +29,7 @@ class BaseModel():
 
         return "[{}] ({}) {}".format(self.__class__.__name__, 
                                      self.id, self.__dict__)
+        pass
 
     def save(self):
         """
@@ -36,7 +37,7 @@ class BaseModel():
         """
 
         self.updated_at = datetime.now()
-
+        pass
     def to_dict(self):
         """
         Este método retorna un diccionario con los atributos de instancia.
@@ -47,3 +48,4 @@ class BaseModel():
         my_dict['updated_at'] = self.__dict__['updated_at'].isoformat()
         my_dict['__class__'] = self.__class__.__name__
         return (my_dict)
+        pass
