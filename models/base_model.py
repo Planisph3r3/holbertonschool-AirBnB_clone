@@ -5,9 +5,6 @@ Este módulo define la clase BaseModel
 
 import uuid
 from datetime import datetime
-from models.tmp_base_model import *
-from models.tmp_base_model import BaseModel
-from models.base_model import BaseModel
 
 class BaseModel():
     """
