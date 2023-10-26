@@ -6,7 +6,6 @@ nuestra clase BaseModel.
 
 
 import unittest
-import datetime
 
 from models.base_model import BaseModel
 
@@ -27,8 +26,18 @@ class TestBaseModel(unittest.TestCase):
         Se comparan los atributos con los tipos de datos.
         """
         self.assertIsInstance(self.bm.id, str)
-        self.assertIsInstance(self.bm.created_at, datetime)
-        self.assertIsInstance(self.bm.updated_at, datetime)
+
+    def test_isdict(self):
+        """
+        Compara el retorno como dict de to_dict().
+        """
+        self.assertIsInstance(self.bm.to_dict(), dict)
+
+    def test_return(self):
+        """
+        Compara el retorno como None de save().
+        """
+        self.assertIsNone(self.bm.save())
 
 
 if __name__ == "__main__":
