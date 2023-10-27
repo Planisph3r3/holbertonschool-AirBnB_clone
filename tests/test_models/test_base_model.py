@@ -8,6 +8,7 @@ nuestra clase BaseModel.
 import unittest
 
 from models.base_model import BaseModel
+import time
 
 
 class TestBaseModel(unittest.TestCase):
@@ -51,6 +52,17 @@ class TestBaseModel(unittest.TestCase):
         expected_output = "[{}] ({}) {}".format(
             bm.__class__.__name__, bm.id, bm.__dict__)
         self.assertEqual(str(bm), expected_output)
+
+    def test_update_date(self):
+        """
+        Este test actualiza el atributo updated_at, para compararlo
+        después de llamar al método save().
+        """
+        model = BaseModel()
+        original_updated_at = model.updated_at
+        time.sleep(1)
+        model.save()
+        self.assertNotEqual(original_updated_at, model.updated_at)
 
 
 if __name__ == "__main__":
