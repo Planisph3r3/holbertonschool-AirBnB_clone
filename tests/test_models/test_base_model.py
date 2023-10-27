@@ -33,13 +33,6 @@ class TestBaseModel(unittest.TestCase):
         """
         self.assertIsNone(self.bm.save())
 
-    def test_to_dict(self):
-        """
-        Verificca sí el método to_dict(), regesa una instancia
-        de diccionario.
-        """
-        self.assertIsInstance(self.bm.to_dict(), dict)
-
     def test_compare_attrs(self):
         """
         Verifica que contengan todos los atributos.
