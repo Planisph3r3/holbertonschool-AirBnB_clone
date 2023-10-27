@@ -43,6 +43,15 @@ class TestBaseModel(unittest.TestCase):
         self.assertIn('updated_at', model_dict)
         self.assertIn('__class__', model_dict)
 
+    def test_methods_magic_str(self):
+        """
+        Compara la salida del método magic __str__.
+        """
+        bm = BaseModel()
+        expected_output = "[{}] ({}) {}".format(
+            bm.__class__.__name__, bm.id, bm.__dict__)
+        self.assertEqual(str(bm), expected_output)
+
 
 if __name__ == "__main__":
     unittest.main()
