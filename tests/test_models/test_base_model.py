@@ -27,12 +27,6 @@ class TestBaseModel(unittest.TestCase):
         """
         self.assertIsInstance(self.bm.id, str)
 
-    def test_isdict(self):
-        """
-        Compara el retorno como dict de to_dict().
-        """
-        self.assertIsInstance(self.bm.to_dict(), dict)
-
     def test_return(self):
         """
         Compara el retorno como None de save().
@@ -45,6 +39,16 @@ class TestBaseModel(unittest.TestCase):
         de diccionario.
         """
         self.assertIsInstance(self.bm.to_dict(), dict)
+
+    def test_compare_attrs(self):
+        """
+        Verifica que contengan todos los atributos.
+        """
+        model_dict = self.bm.to_dict()
+        self.assertIn('id', model_dict)
+        self.assertIn('created_at', model_dict)
+        self.assertIn('updated_at', model_dict)
+        self.assertIn('__class__', model_dict)
 
 
 if __name__ == "__main__":
