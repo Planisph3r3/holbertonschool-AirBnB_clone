@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+    #!/usr/bin/python3
 """
 Este módulo define la clase BaseModel
 """
@@ -35,8 +35,8 @@ class BaseModel():
         else:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
-        self.updated_at = datetime.now()
-        storage.new(self)
+            self.updated_at = datetime.now()
+            storage.new(self)
 
     def __str__(self):
         """
@@ -58,8 +58,9 @@ class BaseModel():
         Este método retorna un diccionario con los atributos de instancia.
         """
 
-        my_dict = dict(self.__dict__)
+        my_dict = self.__dict__.copy()
+        my_dict["__class__"] = type(self).__name__
         my_dict['created_at'] = self.__dict__['created_at'].isoformat()
         my_dict['updated_at'] = self.__dict__['updated_at'].isoformat()
         my_dict['__class__'] = self.__class__.__name__
-        return (my_dict)
+        return my_dict
