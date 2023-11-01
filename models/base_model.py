@@ -49,8 +49,6 @@ class BaseModel():
         Este método actualiza la fecha de creación updated_at.
         """
         self.updated_at = datetime.now()
-        self.created_at = self.created_at.isoformat()
-        storage.save()
 
     def to_dict(self):
         """
