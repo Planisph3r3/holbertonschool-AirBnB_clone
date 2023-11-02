@@ -12,7 +12,7 @@ class FileStorage:
 
     def new(self, obj):
         key = "{}.{}".format(type(obj).__name__, obj.id)
-        FileStorage.__objects[key] = obj.__dict__
+        FileStorage.__objects[key] = obj.to_dict()
 
     def save(self):
         with open(FileStorage.__file_path, "w", encoding="utf-8") as f:
