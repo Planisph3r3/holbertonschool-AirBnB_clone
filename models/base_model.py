@@ -51,7 +51,7 @@ class BaseModel():
         """
         Este método actualiza la fecha de creación updated_at.
         """
-        self.updated_at = datetime.now()
+        self.updated_at = datetime.utcnow()
         storage.save()
 
     def to_dict(self):
