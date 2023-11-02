@@ -64,6 +64,10 @@ class TestBaseModel(unittest.TestCase):
         model.save()
         self.assertNotEqual(original_updated_at, model.updated_at)
 
+    def test_save(self):
+        model = BaseModel()
+        self.assertIsNone(model.save())
+
 
 if __name__ == "__main__":
     unittest.main()
