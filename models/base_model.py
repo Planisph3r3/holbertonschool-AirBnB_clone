@@ -41,21 +41,25 @@ class BaseModel():
         Este metodo retorna una representación de nuestra instancia
         """
 
-        return "[{}] ({}) {}".format(self.__class__.__name__,
-                                     self.id, self.__dict__)
+        # return "[{}] ({}) {}".format(self.__class__.__name__,
+        #                              self.id, self.__dict__)
+
+        return f"[{type(self).__name__}] ({self.id}) " \
+            + str({k: v for k, v in self.__dict__.items() if k != '__class__'})
 
     def save(self):
         """
         Este método actualiza la fecha de creación updated_at.
         """
-        self.updated_at = datetime.now().isoformat()
+        self.updated_at = datetime.now()
         storage.save()
 
     def to_dict(self):
         """
         Este método retorna un diccionario con los atributos de instancia.
         """
-        self.__dict__['__class__'] = self.__class__.__name__
-        self.__dict__['created_at'] = self.__dict__['created_at'].isoformat()
-        self.__dict__['updated_at'] = self.__dict__['updated_at'].isoformat()
-        return self.__dict__
+        new_dict = self.__dict__.copy()
+        new_dict['__class__'] = self.__class__.__name__
+        new_dict['created_at'] = new_dict['created_at'].isoformat()
+        new_dict['updated_at'] = new_dict['updated_at'].isoformat()
+        return new_dict
