@@ -3,11 +3,15 @@ import unittest
 from time import sleep
 from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
+from os import path
 
 
 class TestStorage(unittest.TestCase):
-    def test_file_path(self):
-        self.assertIsNone(FileStorage.__file_path)
+    # def test_file_path(self):
+    #     self.assertIsNone(FileStorage.__file_path)
+
+    def test_file_path1(self):
+        self.assertTrue(path.exists(FileStorage._FileStorage__file_path))
 
     def test_update_now(self):
         model = BaseModel()
@@ -19,7 +23,3 @@ class TestStorage(unittest.TestCase):
     def test_save(self):
         model = BaseModel()
         self.assertIsNone(model.save())
-
-
-if __name__ == '__main__':
-    unittest.main()
