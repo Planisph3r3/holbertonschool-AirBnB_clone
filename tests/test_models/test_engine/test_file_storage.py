@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 import unittest
+from datetime import datetime
 from time import sleep
 from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
@@ -26,3 +27,7 @@ class TestStorage(unittest.TestCase):
     def test_save(self):
         model = BaseModel()
         self.assertIsNone(model.save())
+
+    def test_update_type(self):
+        model = BaseModel()
+        self.assertTrue(type(model.updated_at) == datetime)

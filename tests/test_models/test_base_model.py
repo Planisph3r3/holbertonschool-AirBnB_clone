@@ -8,6 +8,7 @@ nuestra clase BaseModel.
 import unittest
 
 from models.base_model import BaseModel
+from datetime import datetime
 import time
 
 
@@ -70,6 +71,10 @@ class TestBaseModel(unittest.TestCase):
     def test_save(self):
         model = BaseModel()
         self.assertIsNone(model.save())
+
+    def test_update_type(self):
+        model = BaseModel()
+        self.assertTrue(type(model.updated_at) == datetime)
 
 
 if __name__ == "__main__":
