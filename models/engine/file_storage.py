@@ -25,9 +25,7 @@ class FileStorage:
             json.dump(new_dict, f)
 
     def reload(self):
-        if not path.exists(FileStorage.__file_path):
-            return
-        else:
+        if path.exists(FileStorage.__file_path):
             with open(FileStorage.__file_path, "r", encoding="utf-8") as f:
                 objs = json.load(f)
 
