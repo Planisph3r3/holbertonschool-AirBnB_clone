@@ -16,9 +16,12 @@ class TestStorage(unittest.TestCase):
     def test_update_now(self):
         model = BaseModel()
         original_updated_at = model.updated_at
+        original_created_at = model.created_at
         sleep(1)
         model.save()
         self.assertNotEqual(original_updated_at, model.updated_at)
+        self.assertTrue(original_created_at, model.created_at)
+        self.assertNotEqual(model.updated_at, model.created_at)
 
     def test_save(self):
         model = BaseModel()
