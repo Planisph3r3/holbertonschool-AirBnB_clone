@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """
-This module contains 01 classes:
-    - BaseModel
+Este módulo define la clase BaseModel
 """
 
 import uuid
@@ -10,17 +9,20 @@ from models import storage
 
 
 class BaseModel:
-    """This class creates an object from scratch
+    """
+    Este clase expone BaseModel, la que será nuestra superclase.
     """
 
     def __init__(self, *args, **kwargs):
-        """Initialize an BaseModel instance
-        Args:
-            *args: Any positional arguments.
-            **kwargs: Any keyword arguments.
-            id - a string, id - unique assign
-            created_at - datetime assign with the current time of creation
-            updated_at - datetime with the current time of updating
+        """
+        Este método inicializa lo sgte:
+            id, created_at, updated_at
+        Attr:
+            id (str): Genera un id cada vez que se instancia.
+            created_ad (str): Genera la hora y fecha cada vez
+                    que se instancia un nuevo objeto.
+            updated_at (str): Genera y actualiza la hora y fecha,
+                    cada vez que se cambia nuestra instancia.
         """
         if bool(kwargs):
             for k, v in kwargs.items():
@@ -45,12 +47,16 @@ class BaseModel:
             + str({k: v for k, v in self.__dict__.items() if k != '__class__'})
 
     def save(self):
-        """This method updates the updated_at"""
+        """Este método actualiza .updated_at"""
         self.updated_at = datetime.now()
         storage.save()
 
     def to_dict(self):
-        """This method retuns a copy of an instance dictionary"""
+        """
+        Este método genera un nuevo diccionario agregando la clave __class__
+        Returns:
+            new_dict (dict)
+        """
         instance_dict = self.__dict__.copy()
         instance_dict['created_at'] = self.created_at.isoformat()
         instance_dict['updated_at'] = self.updated_at.isoformat()
