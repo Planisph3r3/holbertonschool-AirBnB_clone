@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-This module defines the FileStorage class
+Este módulo define la clase FileStorage.
 """
 
 import json
@@ -8,26 +8,38 @@ from os import path
 
 
 class FileStorage:
-    """This class serializes instances to a JSON file and deserealizes
-    JSON file to instances
-    Attributes:
-        __file_path (str) - path to the JSON file
-        __objects (dict) - stores all objects by <class name>.id
+    """
+    La clase FileStorage se encargará se serializar y
+    deserealizar archivos para recuperar instancias de BaseModel.
     """
     __file_path = "file.json"
-    __objects = {}  # Initializes as an empty dictionary, content will be added
+    __objects = {}
 
     def all(self):
-        """Returns the dictionary __objects"""
+        """
+        Retorna el contenido de .__objects.
+        Returns:
+            dict
+        """
         return FileStorage.__objects
 
     def new(self, obj):
-        """Sets in __object the <obj> with the key <obj class name>.id"""
+        """
+        Este método almacena la instancias de clase,
+        recibidas en .__objects.
+        Args:
+            obj (object): Instacias a almacenar.
+        """
         key = f"{obj.__class__.__name__}.{obj.id}"
         FileStorage.__objects[key] = obj
 
     def save(self):
-        """Serializes __objects dictionary to the JSON file"""
+        """
+        Este método guarda un diccionario retornado de las
+        instancias almacenadas en .__objects.
+        Return:
+            None
+        """
         new_dict = {}
 
         for k, obj in FileStorage.__objects.items():
@@ -36,8 +48,12 @@ class FileStorage:
             json.dump(new_dict, f)
 
     def reload(self):
-        """Deserealizes the JSON file to __objects (only if the JSON file
-        exists, otherwise do nothing
+        """
+        Este método lee un archivo en formato .json, que se guardo
+        previamente con el método .save(), el diccionario recuperado
+        se convertirá a objetos de python (dict) que seran utilizados
+        para recuperar las instancias de clase BaseModel creadas
+        anteriormente, estan istancias serán almacendas en .__objects.
         """
         if path.exists(FileStorage.__file_path):
             with open(FileStorage.__file_path, 'r', encoding='utf-8') as json_file:
