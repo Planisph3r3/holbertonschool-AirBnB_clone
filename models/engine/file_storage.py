@@ -1,4 +1,8 @@
 #!/usr/bin/python3
+"""
+Este módulo define la clase FileStorage.
+"""
+
 import json
 from os import path
 
