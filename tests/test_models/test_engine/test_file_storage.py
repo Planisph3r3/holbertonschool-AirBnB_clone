@@ -8,8 +8,8 @@ from os import path
 
 
 class TestStorage(unittest.TestCase):
-    # def test_file_path(self):
-    #     self.assertIsNone(FileStorage.__file_path)
+    def test_file_path(self):
+        self.assertIsNone(FileStorage.__file_path)
 
     # def test_file_path1(self):
     #     self.assertTrue(path.exists(FileStorage._FileStorage__file_path))
@@ -31,4 +31,3 @@ class TestStorage(unittest.TestCase):
     # def test_update_type(self):
     #     model = BaseModel()
     #     self.assertTrue(type(model.updated_at) == datetime)
-    pass
