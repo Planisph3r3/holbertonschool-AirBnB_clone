@@ -6,6 +6,7 @@ import json
 from os import path
 import datetime
 
+
 class FileStorage:
     """
     La clase FileStorage se encargará se serializar y
@@ -55,15 +56,14 @@ class FileStorage:
         anteriormente, estan istancias serán almacendas en .__objects.
         """
         if path.exists(FileStorage.__file_path):
-            with open(FileStorage.__file_path, 'r', encoding='utf-8') as json_file:
-                objs = json.load(json_file)
+            with open(FileStorage.__file_path, 'r', encoding='utf-8') as f:
+                objs = json.load(f)
             for k, v in objs.items():
                 from models.base_model import BaseModel
                 bs = BaseModel(**v)
                 FileStorage.__objects[k] = bs
 
     def attributes(self):
-
         """Returns the valid attributes and their types for classname"""
         attributes = {
             "BaseModel":
