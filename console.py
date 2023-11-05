@@ -9,6 +9,12 @@ from shlex import split
 from models import storage
 from models.base_model import BaseModel
 from models.user import User
+from models.user import User
+from models.state import State
+from models.city import City
+from models.place import Place
+from models.amenity import Amenity
+from models.review import Review
 
 """
 Esta función analiza una cadena para buscar llaves o corchetes, divide la cadena y elimina las comas 
@@ -134,7 +140,7 @@ class HBNBCommand(cmd.Cmd):
         if len(argl) > 0 and argl[0] not in HBNBCommand.__classes:
             print("** class doesn't exist **")
         else:
-        objl = []
+            objl = []
         for obj in storage.all().values():
             if len(argl) > 0 and argl[0] == obj.__class__.__name__:
                 objl.append(obj.__str__())
