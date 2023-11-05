@@ -5,7 +5,7 @@ Este módulo define la clase FileStorage.
 
 import json
 from os import path
-
+import datetime
 
 class FileStorage:
     """
@@ -62,3 +62,21 @@ class FileStorage:
                 from models.base_model import BaseModel
                 bs = BaseModel(**v)
                 FileStorage.__objects[k] = bs
+
+    def attributes(self):
+
+        """Returns the valid attributes and their types for classname"""
+        attributes = {
+            "BaseModel":
+                {"id": str,
+                 "created_at": datetime.datetime,
+                 "updated_at": datetime.datetime},
+            "User":
+                {"email": str,
+                 "password": str,
+                 "first_name": str,
+                 "last_name": str
+                 },
+        }
+
+        return attributes
