@@ -1,6 +1,18 @@
 #!/usr/bin/python3
 import unittest
 
-class test_show(unittest.TestCase):
-    def test_
+def test_methods_magic_str(self):
+    bm = u()
+    expected_output = f"[{bm.__class__.__name__}] ({bm.id}) {bm.__dict__}"
+    self.assertEqual(str(bm), expected_output)
+
+
+
+
+
+
+
+
+
+
 
