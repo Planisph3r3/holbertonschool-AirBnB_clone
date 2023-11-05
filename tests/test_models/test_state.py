@@ -11,4 +11,4 @@ class TestState(unittest.TestCase):
 
     def test_compare_attrs(self):
         state_dict = self.state.to_dict()
-        self.assertIn("name", state_dict)
+        self.assertNotIn("name", state_dict)

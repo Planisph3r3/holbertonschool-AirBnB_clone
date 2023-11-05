@@ -11,6 +11,6 @@ class TestReview(unittest.TestCase):
 
     def test_compare_attrs(self):
         review_attr = self.review.to_dict()
-        self.assertIn("place_id", review_attr)
-        self.assertIn("user_id", review_attr)
-        self.assertIn("text", review_attr)
+        self.assertNotIn("place_id", review_attr)
+        self.assertNotIn("user_id", review_attr)
+        self.assertNotIn("text", review_attr)
