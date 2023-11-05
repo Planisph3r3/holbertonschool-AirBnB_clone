@@ -11,9 +11,12 @@ from models.base_model import BaseModel
 from models.user import User
 
 """
-Esta función analiza una cadena para buscar llaves o corchetes, divide la cadena y elimina las comas 
+Esta función analiza una cadena para buscar llaves o corchetes,
+divide la cadena y elimina las comas
 de los elementos para luego agregarlo al final de la lista resultante
 """
+
+
 def parse(arg):
     dot1 = re.search(r"\{(.*?)\}", arg)
     dot2 = re.search(r"\[(.*?)\]", arg)
@@ -103,7 +106,7 @@ class HBNBCommand(cmd.Cmd):
         if len(argl) == 0:
             print("** class name missing **")
         elif argl[0] not in HBNBCommand.__classes:
-            print("** class doesn't exist **")    
+            print("** class doesn't exist **")
         elif len(argl) == 1:
             print("** instance id missing **")
         elif "{}.{}".format(argl[0], argl[1]) not in objdict:
@@ -134,7 +137,7 @@ class HBNBCommand(cmd.Cmd):
         if len(argl) > 0 and argl[0] not in HBNBCommand.__classes:
             print("** class doesn't exist **")
         else:
-        objl = []
+            objl = []
         for obj in storage.all().values():
             if len(argl) > 0 and argl[0] == obj.__class__.__name__:
                 objl.append(obj.__str__())
@@ -146,7 +149,8 @@ class HBNBCommand(cmd.Cmd):
         """Usando: update <class> <id> <attribute_name> <attribute_value> or
        <class>.update(<id>, <attribute_name>, <attribute_value>) o
        <class>.update(<id>, <dictionary>)
-        Actualiza la instancia de la clase de la id señalada añadiendo o actualizando un determinado
+        Actualiza la instancia de la clase de la id señalada añadiendo o
+        actualizando un determinado
         par clave/valor de atributo o diccionario."""
         argl = parse(arg)
         objdict = storage.all()
