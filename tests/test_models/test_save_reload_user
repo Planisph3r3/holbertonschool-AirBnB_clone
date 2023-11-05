@@ -2,7 +2,7 @@
 import unittest
 
 def test_methods_magic_str(self):
-    bm = u()
+    bm = user()
     expected_output = f"[{bm.__class__.__name__}] ({bm.id}) {bm.__dict__}"
     self.assertEqual(str(bm), expected_output)
 
