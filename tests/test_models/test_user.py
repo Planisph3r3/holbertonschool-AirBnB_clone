@@ -1,11 +1,18 @@
 #!/usr/bin/python3
 import unittest
+from models.user import user
 
-def test_methods_magic_str(self):
-    bm = user()
-    expected_output = f"[{bm.__class__.__name__}] ({bm.id}) {bm.__dict__}"
-    self.assertEqual(str(bm), expected_output)
 
+class TestUser(unittest.TestCase):
+    def setUp(self):
+        self.Us = user()
+        
+    def test_compare_attrs(self):
+        model_dict = self.Us.to_dict()
+        self.assertIn("email", model_dict)
+        self.assertIn("password", model_dict)
+        self.assertIn("first_name", model_dict)
+        self.assertIn("last_name", model_dict)
 
 
 
