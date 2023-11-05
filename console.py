@@ -39,6 +39,16 @@ class HBNBCommand(cmd.Cmd):
     """
     prompt = "(hbnb) "
 
+    __classes = {
+        "BaseModel",
+        "User",
+        "State",
+        "City",
+        "Place",
+        "Amenity",
+        "Review"
+    }
+
     def default(self, arg):
         """Sintaxis por defecto del modulo cmd si la entrada no es valida"""
         argdict = {
@@ -78,6 +88,8 @@ class HBNBCommand(cmd.Cmd):
         argl = parse(arg)
         if len(argl) == 0:
             print("** class name missing **")
+        elif argl[0] not in HBNBCommand.__classes:
+            print("** class doesn't exist **")
         else:
             print(eval(argl[0])().id)
             storage.save()
@@ -90,6 +102,8 @@ class HBNBCommand(cmd.Cmd):
         objdict = storage.all()
         if len(argl) == 0:
             print("** class name missing **")
+        elif argl[0] not in HBNBCommand.__classes:
+            print("** class doesn't exist **")    
         elif len(argl) == 1:
             print("** instance id missing **")
         elif "{}.{}".format(argl[0], argl[1]) not in objdict:
@@ -117,7 +131,9 @@ class HBNBCommand(cmd.Cmd):
         Display string representations of all instances of a given class.
         If no class is specified, displays all instantiated objects."""
         argl = parse(arg)
-
+        if len(argl) > 0 and argl[0] not in HBNBCommand.__classes:
+            print("** class doesn't exist **")
+        else:
         objl = []
         for obj in storage.all().values():
             if len(argl) > 0 and argl[0] == obj.__class__.__name__:
@@ -137,6 +153,9 @@ class HBNBCommand(cmd.Cmd):
 
         if len(argl) == 0:
             print("** class name missing **")
+            return False
+        if argl[0] not in HBNBCommand.__classes:
+            print("** class doesn't exist **")
             return False
         if len(argl) == 1:
             print("** instance id missing **")
