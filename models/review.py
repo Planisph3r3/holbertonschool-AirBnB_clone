@@ -5,7 +5,7 @@ from models.base_model import BaseModel
 
 class Review(BaseModel):
     """ Muestra la reseña de la habitacion
-    
+
     Atributos:
 
     place_id(str): el id del lugar
