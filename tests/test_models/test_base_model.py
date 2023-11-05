@@ -36,7 +36,7 @@ class TestBaseModel(unittest.TestCase):
         original_created_at = model.created_at
         time.sleep(1)
         model.save()
-        self.assertNotEqual(original_updated_at, model.update_at)
+        self.assertNotEqual(original_updated_at, model.updated_at)
         self.assertTrue(original_created_at, model.created_at)
         self.assertNotEqual(model.updated_at, model.created_at)
 
