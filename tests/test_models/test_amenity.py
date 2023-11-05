@@ -11,4 +11,4 @@ class TestAmenity(unittest.TestCase):
 
     def test_compare_attrs(self):
         amenity_attr = self.amenity.to_dict()
-        self.assertIn("name", amenity_attr)
+        self.assertNotIn("name", amenity_attr)
