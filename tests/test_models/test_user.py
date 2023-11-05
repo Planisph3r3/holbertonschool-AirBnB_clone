@@ -8,11 +8,11 @@ class TestUser(unittest.TestCase):
         self.Us = user()
         
     def test_compare_attrs(self):
-        model_dict = self.Us.to_dict()
-        self.assertIn("email", model_dict)
-        self.assertIn("password", model_dict)
-        self.assertIn("first_name", model_dict)
-        self.assertIn("last_name", model_dict)
+        user_dict = self.Us.to_dict()
+        self.assertIn("email", user_dict)
+        self.assertIn("password", user_dict)
+        self.assertIn("first_name", user_dict)
+        self.assertIn("last_name", user_dict)
 
 
 
