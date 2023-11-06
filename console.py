@@ -127,6 +127,8 @@ class HBNBCommand(cmd.Cmd):
         objdict = storage.all()
         if len(argl) == 0:
             print("** class name missing **")
+        elif not argl[1] in HBNBCommand.__classes:
+            print("** class doesn't exist **")
         elif len(argl) == 1:
             print("** instance id missing **")
         elif "{}.{}".format(argl[0], argl[1]) not in objdict.keys():
